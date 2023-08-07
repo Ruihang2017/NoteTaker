@@ -1,7 +1,6 @@
 const notes = require('express').Router();
-
+const uuid = require('../utils/uuid');
 const { captureRejectionSymbol } = require('events');
-const { json } = require('express');
 const fs = require('fs').promises;
 
 // return the post data
@@ -23,7 +22,9 @@ notes.post('/', (req, res) => {
         const newTask = {
             title,
             text,
+            id: uuid(),
         }
+        console.log(`id = ${newTask.id}`)
         fs.readFile('./db/db.json', 'utf8').then(data => {
             const parseData = JSON.parse(data);
             parseData.push(newTask);
@@ -47,12 +48,6 @@ notes.post('/', (req, res) => {
     }
 });
 
-// notes.delete('/', (req, res) => {
-//     console.info(`${req.method} request received to notes`);
-//     console.log(req.body);
-//     res.status(200).send(`${req.method} request received to notes`);
-
-// });
 
 // Define a DELETE route for a specific note resource
 notes.delete('/:noteId', (req, res) => {
