@@ -52,13 +52,24 @@ notes.post('/', (req, res) => {
 // Define a DELETE route for a specific note resource
 notes.delete('/:noteId', (req, res) => {
     const noteId = req.params.noteId;
-    console.log(req.body);
-    console.log(req.params);
-    // console.log(req);
+    if (noteId) {
+        console.log(noteId);
+        fs.readFile('./db/db.json', 'utf8').then(data => {
+            const parseData = JSON.parse(data);
+            const newData = parseData.filter(task => task.id !== noteId);
 
-    // Delete the note with the given noteId using the notesController
-    // ...
+            fs.writeFile('./db/db.json', JSON.stringify(newData, null, 4), 'utf8', (err) => {
+                if (err) {
+                    res.status(500).json({ error: 'An error occured serverside' });
+                } else {
+                    console.info(`Data updated successful to ./db/db.json`);
+                }
+            });
 
+        }).catch(err => {
+            res.status(500).json({ error: 'An error occured serverside' });
+        });
+    }
     console.info(`DELETE request received for note with ID: ${noteId}`);
     res.status(200).send(`DELETE request received for note with ID: ${noteId}`);
 });

@@ -12,5 +12,10 @@ A Noate Taker web application use that allows you to write, save, display and de
   - WHEN you click on the Write icon in the navigation at the top of the page, THEN you are presented with empty fields to enter a new note title and the note’s text in the right-hand column
 
 ## Deloyment
+https://dry-lowlands-94068-780abebba1ca.herokuapp.com/
+
+## Questions
+![githubIcon](./assest/icon/github.svg) Github: https://github.com/ruihang2017
+![emailIcon](./assest/icon/envelope.svg)  Email: ruihang2017@gmail.com
 
 
