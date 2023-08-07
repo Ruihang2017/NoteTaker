@@ -16,8 +16,5 @@ A Noate Taker web application use that allows you to write, save, display and de
 ## Deloyment
 https://dry-lowlands-94068-780abebba1ca.herokuapp.com/
 
-## Questions
-![githubIcon](./assest/icon/github.svg) Github: https://github.com/ruihang2017
-![emailIcon](./assest/icon/envelope.svg)  Email: ruihang2017@gmail.com
 
 
